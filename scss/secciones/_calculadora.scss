@@ -61,10 +61,31 @@ section {
         padding: 1rem;
         border-radius: 5px;
 
-        .titulo {
-            text-align: center;
-            color: v.$blanco-opaco;
-            margin: 0.3rem 1.3rem 1.3rem 1.3rem;
+        .seccion {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: .1rem 0rem .8rem 0rem;
+
+            .titulo {
+                text-align: center;
+                color: v.$blanco-opaco;
+                margin: .5rem;
+            }
+
+            .boton {
+                border: none;
+                background: none;
+                color: v.$blanco;
+                cursor: pointer;
+                outline: none;
+                font-size: 1.3rem;
+                margin-right: .5rem;
+            }
+
+            .boton:active {
+                color: v.$marron-claro;
+            }
         }
 
         .operaciones {

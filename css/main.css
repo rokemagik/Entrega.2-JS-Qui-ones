@@ -77,10 +77,28 @@ section .historial {
   padding: 1rem;
   border-radius: 5px;
 }
-section .historial .titulo {
+section .historial .seccion {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.1rem 0rem 0.8rem 0rem;
+}
+section .historial .seccion .titulo {
   text-align: center;
   color: #f3eae8;
-  margin: 0.3rem 1.3rem 1.3rem 1.3rem;
+  margin: 0.5rem;
+}
+section .historial .seccion .boton {
+  border: none;
+  background: none;
+  color: #ffffff;
+  cursor: pointer;
+  outline: none;
+  font-size: 1.3rem;
+  margin-right: 0.5rem;
+}
+section .historial .seccion .boton:active {
+  color: #857770;
 }
 section .historial .operaciones {
   height: 29rem;

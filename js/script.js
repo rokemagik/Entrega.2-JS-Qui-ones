@@ -3,8 +3,7 @@
 let pantallaValor = document.getElementById("calculo")
 let pantallaResultado = document.getElementById("resultado")
 
-const historial = [];
-const historialMax = 6;
+let historial = [];
 
 let numero = 1; 
 
@@ -27,6 +26,9 @@ botones.forEach(function(boton) {
                     break
                 case "delete":
                     Delete();
+                    break
+                case "delete-historial":
+                    DeleteHistorial();
                     break
                 case "igual":
                     Resultado();
@@ -55,15 +57,19 @@ function Delete() {
     }
 }
 
+function DeleteHistorial() {
+    if (historial.length >= 1) {
+        historial = []
+        numero = 1
+    }
+    actualizarHistorial();
+}
+
 function Resultado() {
     let operacion = pantallaValor.textContent;
     let resultado = math.evaluate(operacion);
 
     pantallaResultado.textContent = resultado;
-
-    //while (historial.length >= historialMax) {
-    //    historial.shift()
-    //} 
 
     historial.push(`${numero++}. ${operacion} = ${resultado}`);
     actualizarHistorial();
