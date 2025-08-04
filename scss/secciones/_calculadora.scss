@@ -90,7 +90,7 @@ section {
 
         .operaciones {
             height: 29rem;
-            width: 25rem;
+            width: 40rem;
             background-color: v.$blanco-opaco;
             color: v.$negro;
             overflow: scroll;
@@ -103,6 +103,7 @@ section {
                 text-align: start;
                 padding: 1.2rem .5rem 1.2rem .8rem;
                 border-bottom: 2px solid v.$marron-oscuro;
+                white-space: pre-line;
             }
 
             p:last-child {

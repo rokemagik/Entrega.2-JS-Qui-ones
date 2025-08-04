@@ -4,8 +4,22 @@ let pantallaValor = document.getElementById("calculo")
 let pantallaResultado = document.getElementById("resultado")
 
 let historial = [];
-
 let numero = 1; 
+
+const historialGuardado = JSON.parse(localStorage.getItem("historial"));
+if (historialGuardado) {
+    historial.push(
+        ...historialGuardado.map(
+            (o) => new Operacion(o.id, o.expresion, o.resultado, o.time)
+        )
+    );
+    actualizarHistorial();
+}
+
+const numeroGuardado = localStorage.getItem("numero");
+if (numeroGuardado) {
+    numero = Number(numeroGuardado);
+}
 
 let botones = document.querySelectorAll("button")
 botones.forEach(function(boton) {
@@ -44,6 +58,15 @@ botones.forEach(function(boton) {
     })
 })
 
+
+function Operacion(id, expresion, resultado, time = new Date().toLocaleString()) {
+    this.id = id;
+    this.expresion = expresion;
+    this.resultado = resultado;
+    this.time = time;
+}
+
+
 function Clear() {
     if(pantallaValor.textContent.length || pantallaResultado.textContent.length) {
         pantallaValor.textContent = "";
@@ -51,29 +74,48 @@ function Clear() {
     }
 }
 
+
+
 function Delete() {
     if (pantallaValor.textContent.length) {
         pantallaValor.textContent = pantallaValor.textContent.slice(0, -1);
     }
 }
 
+
+
 function DeleteHistorial() {
     if (historial.length >= 1) {
-        historial = []
+        historial.length = 0
         numero = 1
+
+        localStorage.removeItem("historial");
+        localStorage.removeItem("numero");
+
+        actualizarHistorial();
     }
-    actualizarHistorial();
 }
 
+
+
 function Resultado() {
-    let operacion = pantallaValor.textContent;
+    let operacion = pantallaValor.textContent.trim();
+    if (operacion === "") {
+        return;
+    }
+
     let resultado = math.evaluate(operacion);
 
     pantallaResultado.textContent = resultado;
 
-    historial.push(`${numero++}. ${operacion} = ${resultado}`);
+    const nuevaOperacion = new Operacion(numero++, operacion, resultado)
+    historial.push(nuevaOperacion);
+    localStorage.setItem("historial", JSON.stringify(historial));
+    localStorage.setItem("numero", numero);
     actualizarHistorial();
 }
+
+
 
 function actualizarHistorial() {
     const contenedor = document.getElementById("operaciones");
@@ -81,7 +123,7 @@ function actualizarHistorial() {
 
     historial.forEach((item) => {
         const p = document.createElement("p");
-        p.textContent = item;
+        p.textContent = `${item.id}. ${item.expresion} = ${item.resultado}\nFecha: ${item.time}`;
         contenedor.appendChild(p);
     })
 
