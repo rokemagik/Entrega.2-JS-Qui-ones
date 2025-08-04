@@ -1,0 +1,24 @@
+@use '../utilidades/variables' as v;
+
+html, body {
+    width: 100%;
+    overflow-x: hidden !important; 
+    margin: 0;
+    padding: 0;
+    touch-action: pan-y; 
+    position: relative;
+    background-color: v.$marron-claro;
+    height: 55rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Arial', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    max-width: 100%; 
+    margin: 0;
+    padding: 0;
+}

@@ -1,0 +1,107 @@
+@use '../utilidades/variables' as v;
+
+section {
+    display: flex;
+    gap: 3rem;
+    margin-top: 10rem;
+
+    .calculadora {
+        background-color: v.$marron-oscuro;
+        padding: 1rem;
+        width: 20rem;
+        border-radius: 5px;
+
+        .pantalla {
+            display: grid;
+            grid-template-columns: 1fr; 
+            grid-template-rows: repeat(2, 50%); 
+            background-color: v.$blanco-opaco;
+            height: 6rem;
+            width: 100%;
+            margin-bottom: 2rem;
+            text-align: end;
+            align-items: center;
+
+            .calculo {
+                padding-right: 1rem;
+                font-size: 1.2rem;
+            }
+            .resultado {
+                padding-right: 1rem;
+                font-size: 1.35rem;
+                font-weight: bold;
+            }
+        }
+
+        .botones {
+            display: grid;
+            grid-template-columns: repeat(4 ,1fr);
+            gap: .4rem;
+
+            .boton {
+                border: none;
+                background-color: v.$marron-claro;
+                color: v.$blanco;
+                padding: 1.5rem 0;
+                cursor: pointer;
+                border-radius: 3px;
+                outline: none;
+                font-size: 1.3rem;
+            }
+
+            .boton:active {
+                background-color: v.$blanco-opaco;
+                color: v.$marron-oscuro;
+            }
+        }
+    }
+
+    .historial {
+        background-color: v.$marron-oscuro;
+        padding: 1rem;
+        border-radius: 5px;
+
+        .titulo {
+            text-align: center;
+            color: v.$blanco-opaco;
+            margin: 0.3rem 1.3rem 1.3rem 1.3rem;
+        }
+
+        .operaciones {
+            height: 29rem;
+            width: 25rem;
+            background-color: v.$blanco-opaco;
+            color: v.$negro;
+            overflow: scroll;
+            overflow-y: auto;   
+            overflow-x: hidden;
+
+            p {
+                color: v.$negro;
+                font-size: 1.3rem;
+                text-align: start;
+                padding: 1.2rem .5rem 1.2rem .8rem;
+                border-bottom: 2px solid v.$marron-oscuro;
+            }
+
+            p:last-child {
+                border-bottom: none;
+            }
+        }
+    }
+}
+
+.señal {
+    padding: 1.3rem;
+    background-color: v.$marron-oscuro;
+    border-radius: 5px;
+    margin-top: 5rem;
+
+    p {
+        color: v.$blanco-opaco;
+
+        i {
+            font-size: 1.5rem;
+        }
+    }
+}

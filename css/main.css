@@ -1,0 +1,118 @@
+@charset "UTF-8";
+html, body {
+  width: 100%;
+  overflow-x: hidden !important;
+  margin: 0;
+  padding: 0;
+  touch-action: pan-y;
+  position: relative;
+  background-color: #857770;
+  height: 55rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Arial", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+section {
+  display: flex;
+  gap: 3rem;
+  margin-top: 10rem;
+}
+section .calculadora {
+  background-color: #291107;
+  padding: 1rem;
+  width: 20rem;
+  border-radius: 5px;
+}
+section .calculadora .pantalla {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(2, 50%);
+  background-color: #f3eae8;
+  height: 6rem;
+  width: 100%;
+  margin-bottom: 2rem;
+  text-align: end;
+  align-items: center;
+}
+section .calculadora .pantalla .calculo {
+  padding-right: 1rem;
+  font-size: 1.2rem;
+}
+section .calculadora .pantalla .resultado {
+  padding-right: 1rem;
+  font-size: 1.35rem;
+  font-weight: bold;
+}
+section .calculadora .botones {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.4rem;
+}
+section .calculadora .botones .boton {
+  border: none;
+  background-color: #857770;
+  color: #ffffff;
+  padding: 1.5rem 0;
+  cursor: pointer;
+  border-radius: 3px;
+  outline: none;
+  font-size: 1.3rem;
+}
+section .calculadora .botones .boton:active {
+  background-color: #f3eae8;
+  color: #291107;
+}
+section .historial {
+  background-color: #291107;
+  padding: 1rem;
+  border-radius: 5px;
+}
+section .historial .titulo {
+  text-align: center;
+  color: #f3eae8;
+  margin: 0.3rem 1.3rem 1.3rem 1.3rem;
+}
+section .historial .operaciones {
+  height: 29rem;
+  width: 25rem;
+  background-color: #f3eae8;
+  color: #000000;
+  overflow: scroll;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+section .historial .operaciones p {
+  color: #000000;
+  font-size: 1.3rem;
+  text-align: start;
+  padding: 1.2rem 0.5rem 1.2rem 0.8rem;
+  border-bottom: 2px solid #291107;
+}
+section .historial .operaciones p:last-child {
+  border-bottom: none;
+}
+
+.señal {
+  padding: 1.3rem;
+  background-color: #291107;
+  border-radius: 5px;
+  margin-top: 5rem;
+}
+.señal p {
+  color: #f3eae8;
+}
+.señal p i {
+  font-size: 1.5rem;
+}
+
+/*# sourceMappingURL=main.css.map */
