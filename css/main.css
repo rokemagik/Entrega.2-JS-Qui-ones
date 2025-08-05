@@ -53,6 +53,9 @@ section .calculadora .pantalla .resultado {
   font-size: 1.35rem;
   font-weight: bold;
 }
+section .calculadora .pantalla .error {
+  font-size: 1.18rem;
+}
 section .calculadora .botones {
   display: grid;
   grid-template-columns: repeat(4, 1fr);

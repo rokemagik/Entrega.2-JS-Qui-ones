@@ -104,7 +104,21 @@ function Resultado() {
         return;
     }
 
-    let resultado = math.evaluate(operacion);
+    let resultado
+    try {
+        resultado = math.evaluate(operacion);
+    } catch (error) {
+        pantallaResultado.textContent = "Operacion Invalida";
+        return;
+    }
+
+    if(!isFinite(resultado) || isNaN(resultado)) {
+        pantallaResultado.classList.add("error");
+        pantallaResultado.textContent = "No se puede dividir por cero";
+        return;
+    }
+
+    pantallaResultado.classList.remove("error");
 
     pantallaResultado.textContent = resultado;
 
