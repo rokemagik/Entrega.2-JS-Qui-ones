@@ -7,19 +7,39 @@ let historial = [];
 let numero = 1; 
 
 const historialGuardado = JSON.parse(localStorage.getItem("historial"));
-if (historialGuardado) {
+const numeroGuardado = localStorage.getItem("numero");
+
+if (historialGuardado && historialGuardado.length > 0) {
     historial.push(
         ...historialGuardado.map(
             (o) => new Operacion(o.id, o.expresion, o.resultado, o.time)
         )
     );
+
+    if (numeroGuardado) {
+        numero = Number(numeroGuardado);
+    }
+
     actualizarHistorial();
+} else {
+    fetch("./data/historial.json")
+    .then(response => response.json())
+    .then(data => {
+        console.log("Historial de ejemplo cargado desde JSON:", data);
+
+        data.forEach(item => {
+            historial.push(new Operacion(item.id, item.expresion, item.resultado, item.time));
+        });
+
+        localStorage.setItem("historial", JSON.stringify(historial));
+        localStorage.setItem("numero", historial.length + 1);
+
+        numero = historial.length + 1;
+        actualizarHistorial();
+      })
+    .catch(error => console.error("Error cargando JSON:", error));
 }
 
-const numeroGuardado = localStorage.getItem("numero");
-if (numeroGuardado) {
-    numero = Number(numeroGuardado);
-}
 
 let botones = document.querySelectorAll("button")
 botones.forEach(function(boton) {

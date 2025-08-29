@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "expresion": "5+3",
+    "resultado": 8,
+    "time": "---Este es un ejemplo de operacion---"
+  },
+  {
+    "id": 2,
+    "expresion": "10/2",
+    "resultado": 5,
+    "time": "---Puede borrar el historial---"
+  }
+]
