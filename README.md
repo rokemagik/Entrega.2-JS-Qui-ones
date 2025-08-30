@@ -1,0 +1,2 @@
+Entrego esta app de calculadora, intente aplicar lo mas que pude sin agregar contenido de mas, pero implemente el uso de JSON al dar opciones de operaciones en el historial al iniciar la calculadora, y modificar los alert con una libreria, ya se genera html interactivo con 
+el historial y no encontre como agrega promesas o asincronismo para que quede bien pero aun asi me parece que esta completa la entrega, espero su devolucion. gracias.
