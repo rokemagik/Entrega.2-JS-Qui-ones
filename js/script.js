@@ -71,7 +71,7 @@ botones.forEach(function(boton) {
             title: 'Error!',
             text: 'Opcion no valida',
             icon: 'error',
-            confirmButtonText: 'Cool'
+            confirmButtonText: 'OK'
             })
         }
     })
