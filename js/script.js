@@ -25,16 +25,10 @@ if (historialGuardado && historialGuardado.length > 0) {
     fetch("./data/historial.json")
     .then(response => response.json())
     .then(data => {
-        console.log("Historial de ejemplo cargado desde JSON:", data);
 
         data.forEach(item => {
             historial.push(new Operacion(item.id, item.expresion, item.resultado, item.time));
         });
-
-        localStorage.setItem("historial", JSON.stringify(historial));
-        localStorage.setItem("numero", historial.length + 1);
-
-        numero = historial.length + 1;
         actualizarHistorial();
       })
     .catch(error => console.error("Error cargando JSON:", error));
@@ -73,7 +67,12 @@ botones.forEach(function(boton) {
                 pantallaValor.textContent += botonOperacion;
             }
         } else {
-            alert("Opcion no Valida");
+            Swal.fire({
+            title: 'Error!',
+            text: 'Opcion no valida',
+            icon: 'error',
+            confirmButtonText: 'Cool'
+            })
         }
     })
 })
@@ -139,8 +138,12 @@ function Resultado() {
     }
 
     pantallaResultado.classList.remove("error");
-
     pantallaResultado.textContent = resultado;
+
+    if(historial.length > 0) {
+        // Filtramos: eliminamos todo lo que tenga 'time' con texto de ejemplo
+        historial = historial.filter(op => !op.time.includes("ejemplo"));
+    }
 
     const nuevaOperacion = new Operacion(numero++, operacion, resultado)
     historial.push(nuevaOperacion);
